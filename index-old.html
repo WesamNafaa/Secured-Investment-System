@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام الاستثمار المُحصّن - استثمار بثقة</title>
+  <meta name="description" content="احسب عائدك الاستثماري المتوقع بثقة ووضوح. توزيع ذكي على استراتيجيات مدرجة بناءً على رأس المال ومستوى المخاطرة.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/lib/jspdf.umd.min.js"></script>
+  <script src="js/lib/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span>نظام الاستثمار المُحصّن</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#calculator-section">الحاسبة</a>
+        <a href="#how-it-works">كيف يعمل</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/Wesam.Nafaa" target="_blank" rel="noopener noreferrer" class="btn-contact">تواصل مع مستشار</a>
+        <button class="btn-login">تسجيل الدخول</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust Bar -->
+      <div class="trust-bar">
+    <div class="container trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon">📊</div>
+        <div>
+          <p class="trust-label">اختبارات تاريخية</p>
+          <p class="trust-sub">18 عاماً من البيانات</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <div>
+          <p class="trust-label">إدارة مخاطر</p>
+          <p class="trust-sub">تصنيف صارم</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">👁️</div>
+        <div>
+          <p class="trust-label">شفافية الأداء</p>
+          <p class="trust-sub">كل الأرقام موثقة</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✅</div>
+        <div>
+          <p class="trust-label">182,145 صفقة ناجحة</p>
+          <p class="trust-sub">إجتازتها الخوارزميات بنجاح</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔄</div>
+        <div>
+          <p class="trust-label">3,753,462 ساعة عمل</p>
+          <p class="trust-sub">النظام ينبض على مدار الساعة</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero + Calculator -->
+  <section class="hero" id="calculator-section">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span>⚡</span> محاسبة تفاعلية
+        </div>
+        <h1>احسب عائدك الاستثماري المتوقع<br><span class="gold-text">بثقة ووضوح</span></h1>
+        <p class="hero-desc">أدخل رأس المال، حدد مستوى المخاطرة، واحصل على توزيع ذكي مبني على بيانات أداء تاريخية.</p>
+      </div>
+
+      <!-- Calculator Card -->
+      <div class="calc-card" id="calc-card">
+        <!-- Capital Input -->
+        <div class="calc-header">
+          <div class="calc-header-icon">$</div>
+          <div>
+            <h2>رأس المال الاستثماري</h2>
+            <p class="muted-text">أدخل المبلغ بالدولار الأمريكي</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">المبلغ (USD)</label>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="text" id="capital-input" inputmode="numeric" placeholder="5,000" class="capital-input" dir="ltr">
+          </div>
+          <p class="error-text" id="capital-error"></p>
+        </div>
+
+        <!-- Quick Amounts -->
+        <div class="quick-amounts" id="quick-amounts">
+          <button class="chip" data-amount="10000">$10,000</button>
+          <button class="chip" data-amount="20000">$20,000</button>
+          <button class="chip" data-amount="50000">$50,000</button>
+          <button class="chip active" data-amount="100000">$100,000</button>
+          <button class="chip" data-amount="250000">$250,000</button>
+          <button class="chip" data-amount="500000">$500,000</button>
+          <button class="chip" data-amount="1000000">$1,000,000</button>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+          <label class="input-label">النمط</label>
+          <div class="mode-buttons">
+            <button class="mode-btn active" data-mode="estimate">عرض تقديري</button>
+            <button class="mode-btn" data-mode="execute">عرض تنفيذي</button>
+          </div>
+        </div>
+
+        <!-- Risk Allocation -->
+        <div class="risk-section">
+          <div class="risk-header">
+            <label class="input-label">توزيع المخاطرة</label>
+            <div class="risk-total">
+              <span id="risk-total" class="risk-total-num">100%</span>
+              <span id="risk-remaining" class="risk-remaining"></span>
+            </div>
+          </div>
+          <div class="risk-progress">
+            <div class="risk-progress-bar" id="risk-progress-bar"></div>
+          </div>
+          <p class="error-text" id="risk-error"></p>
+
+          <!-- Safe -->
+          <div class="risk-category" data-category="safe">
+            <div class="risk-cat-header">
+              <div class="risk-cat-info">
+                <div class="risk-cat-icon safe">🛡️</div>
+                <div>
+                  <span class="risk-cat-name">آمن</span>
+                  <p class="risk-cat-desc">19 استراتيجية صمدت 18 عاماً</p>
+                </div>
+              </div>
+              <span class="risk-cat-value number" id="risk-safe-value">50%</span>
+            </div>
+            <input type="range" id="risk-safe-slider" min="0" max="100" step="5" value="50" class="risk-slider safe">
+            <div class="chip-group" id="risk-safe-chips"></div>
+          </div>
+
+          <!-- Average -->
+          <div class="risk-category" data-category="average">
+            <div class="risk-cat-header">
+              <div class="risk-cat-info">
+                <div class="risk-cat-icon average">📈</div>
+                <div>
+                  <span class="risk-cat-name">متوسط</span>
+                  <p class="risk-cat-desc">تجاوزت 18 عاماً — بيانات 6 سنوات</p>
+                </div>
+              </div>
+              <span class="risk-cat-value number" id="risk-average-value">30%</span>
+            </div>
+            <input type="range" id="risk-average-slider" min="0" max="100" step="5" value="30" class="risk-slider average">
+            <div class="chip-group" id="risk-average-chips"></div>
+          </div>
+
+          <!-- High -->
+          <div class="risk-category" data-category="high">
+            <div class="risk-cat-header">
+              <div class="risk-cat-info">
+                <div class="risk-cat-icon high">⚡</div>
+                <div>
+                  <span class="risk-cat-name">عالٍ</span>
+                  <p class="risk-cat-desc">23 استراتيجية هجومية حديثة</p>
+                </div>
+              </div>
+              <span class="risk-cat-value number" id="risk-high-value">20%</span>
+            </div>
+            <input type="range" id="risk-high-slider" min="0" max="100" step="5" value="20" class="risk-slider high">
+            <div class="chip-group" id="risk-high-chips"></div>
+          </div>
+
+          <!-- Presets -->
+          <div class="presets-section">
+            <p class="presets-label">جاهز سريع:</p>
+            <div class="presets-chips" id="presets-chips">
+              <button class="chip preset" data-preset="100,0,0">شديد الأمان</button>
+              <button class="chip preset" data-preset="70,25,5">محافظ</button>
+              <button class="chip preset" data-preset="50,30,20">متوازن</button>
+              <button class="chip preset" data-preset="35,40,25">نمو</button>
+              <button class="chip preset" data-preset="20,40,40">مرتفع المخاطرة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="calc-actions">
+          <button class="btn-calculate" id="btn-calculate" disabled>
+            <span>📊</span> احسب العائد الآن
+          </button>
+          <button class="btn-reset" id="btn-reset" style="display:none;">إعادة تعيين</button>
+        </div>
+
+        <p class="estimate-note" id="estimate-note">النتائج تقديرية لأغراض العرض. التنفيذ الفعلي يعتمد على الحد الأدنى لكل استراتيجية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Dashboard -->
+  <section class="results-section" id="results-section" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <h2>نتائج التحليل</h2>
+        <p class="section-desc">توزيع استثمارك بناءً على البيانات التاريخية</p>
+      </div>
+
+      <!-- Warnings -->
+      <div class="warnings-container" id="warnings-container"></div>
+
+      <!-- Return Cards -->
+      <div class="return-cards">
+        <div class="return-card">
+          <p class="return-label">العائد الأسبوعي (صافي)</p>
+          <p class="return-value number success" id="res-weekly">$0</p>
+          <p class="return-pct number muted" id="res-weekly-pct">0.00%</p>
+          <p class="return-fee number muted" id="res-weekly-fee"></p>
+        </div>
+        <div class="return-card">
+          <p class="return-label">العائد الشهري (صافي)</p>
+          <p class="return-value number success" id="res-monthly">$0</p>
+          <p class="return-pct number muted" id="res-monthly-pct">0.00%</p>
+          <p class="return-fee number muted" id="res-monthly-fee"></p>
+        </div>
+        <div class="return-card">
+          <p class="return-label">العائد السنوي (صافي)</p>
+          <p class="return-value number success" id="res-yearly">$0</p>
+          <p class="return-pct number muted" id="res-yearly-pct">0.00%</p>
+          <p class="return-fee number muted" id="res-yearly-fee"></p>
+        </div>
+      </div>
+
+      <!-- Summary Row -->
+      <div class="summary-row">
+        <div class="summary-card danger-card">
+          <div class="summary-card-header">
+            <span>📉</span>
+            <p>أقصى تراجع تاريخي متوقع</p>
+          </div>
+          <p class="summary-big number danger" id="res-drawdown">$0</p>
+          <p class="summary-pct number muted" id="res-drawdown-pct">0.00%</p>
+          <p class="drawdown-freq-inline" id="res-drawdown-freq"></p>
+          <div class="drawdown-freq-notes" id="drawdown-freq-notes">
+            <span class="freq-note safe-note">🛡️ الآمن: مرة كل 18 عاماً</span>
+            <span class="freq-note avg-note">📈 المتوسط: مرة كل 5 سنوات</span>
+            <span class="freq-note high-note">⚡ العالي: Hazard — أكثر من مرة خلال 18 عاماً</span>
+          </div>
+        </div>
+        <div class="summary-card info-card">
+          <div class="summary-card-header">
+            <span>📈</span>
+            <p>ملخص المحفظة</p>
+          </div>
+          <div class="summary-grid">
+            <div>
+              <p class="summary-grid-label">الاستراتيجيات</p>
+              <p class="summary-grid-value number" id="res-total-strategies">0</p>
+            </div>
+            <div>
+              <p class="summary-grid-label">رأس المال المستخدم</p>
+              <p class="summary-grid-value number" id="res-used-capital">$0</p>
+            </div>
+            <div>
+              <p class="summary-grid-label">غير المستغل</p>
+              <p class="summary-grid-value number warning" id="res-unallocated">$0</p>
+            </div>
+            <div>
+              <p class="summary-grid-label">العائد قبل Fees</p>
+              <p class="summary-grid-value number" id="res-yearly-gross">$0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3><span>🥧</span> توزيع المخاطرة</h3>
+          <canvas id="pie-chart" width="300" height="300"></canvas>
+          <div class="chart-legend" id="pie-legend"></div>
+        </div>
+        <div class="chart-card">
+          <h3><span>📊</span> العائد حسب الفترة</h3>
+          <canvas id="bar-chart" width="400" height="280"></canvas>
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-dot gold"></span> قبل Fees</div>
+            <div class="legend-item"><span class="legend-dot green"></span> بعد Fees</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        <p>النتائج مبنية على بيانات تاريخية ولا تمثل ضماناً للأداء المستقبلي. الأرقام المعروضة بعد احتساب أتعاب التشغيل (20% لجميع الفئات).</p>
+        <button class="btn-calc-gold" style="margin-top:14px;font-size:14px;padding:10px 20px" data-action="download-pdf">📄 تحميل التقرير كـ PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy Table -->
+  <section class="table-section" id="table-section" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <h2>الاستراتيجيات المختارة</h2>
+        <p class="section-desc">تفاصيل توزيع رأس المال على كل استراتيجية</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="table-wrapper desktop-only">
+        <table class="strategy-table" id="strategy-table">
+          <thead>
+            <tr>
+              <th>الرمز</th>
+              <th>الاستراتيجية</th>
+              <th>المخاطرة</th>
+              <th>Lot Size</th>
+              <th>الحد الأدنى</th>
+              <th>المخصص</th>
+              <th>أسبوعي</th>
+              <th>شهري</th>
+              <th>سنوي</th>
+              <th>نسبة العائد</th>
+              <th>أقصى تراجع</th>
+              <th>PF</th>
+              <th>Win %</th>
+              <th>Fees</th>
+              <th>الفترة</th>
+            </tr>
+          </thead>
+          <tbody id="strategy-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="mobile-cards mobile-only" id="mobile-strategy-cards"></div>
+    </div>
+  </section>
+
+  <!-- Risk Disclosure -->
+  <section class="disclosure-section" id="disclosure">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge danger">
+          <span>⚠️</span> إخلاء المسؤولية
+        </div>
+        <h2>تصنيف المخاطرة</h2>
+        <p class="section-desc">فهم المخاطرة هو الخطوة الأولى نحو الاستثمار الواعي</p>
+      </div>
+
+      <div class="disclosure-cards">
+        <div class="disclosure-card safe-card">
+          <div class="disc-header">
+            <div class="disc-icon safe">🛡️</div>
+            <div>
+              <h3>الفئة الآمنة</h3>
+              <p class="disc-period">2008 - 2026</p>
+            </div>
+          </div>
+          <p class="disc-desc">تشكل هذه الفئة العمود الفقري للنظام، وإثبات الأمان والاستقرار وتضم 19 استراتيجية صمدت وازدهرت خلال الـ 18 عاماً (2008-2026).</p>
+          <ul class="disc-events">
+            <li>أزمة 2008 المالية الكبرى (الركود الكبير)</li>
+            <li>أزمة ديون منطقة اليورو (2010-2015)</li>
+            <li>انهيار أسعار النفط (2014-2016)</li>
+            <li>جائحة كوفيد-19 (2020-2021)</li>
+            <li>موجة التضخم وأزمة الفائدة (2022-2024)</li>
+            <li>أزمة انهيار البنوك (2023)</li>
+            <li>تقلبات إعادة التسعير (2024-2026)</li>
+          </ul>
+        </div>
+        <div class="disclosure-card avg-card">
+          <div class="disc-header">
+            <div class="disc-icon average">📈</div>
+            <div>
+              <h3>الفئة المتوسطة</h3>
+              <p class="disc-period">2020 - 2026</p>
+            </div>
+          </div>
+          <p class="disc-desc">تجاوزت مِحّن وأزمات الـ 18 عاماً وتم تشغيلها بشكل متوسط المخاطرة لتزدهر على بيانات آخر 6 سنوات لتعظيم الربحية (جائحة كورونا ونهاية ولاية ترامب الأولى وعهد بايدن وولاية ترامب الثانية)، مع تنبيه شفاف: "تشهد هذه الفئة انخفاضاً حاداً كل 5 سنوات" وفقاً للرصد الفني والتقني والخوارزمي مما يجعلها آمنة تاريخياً ولكنها متوسطة المخاطرة تشغيلياً.</p>
+          <ul class="disc-events">
+            <li>تقلبات ما بعد الجائحة (2020-2022)</li>
+            <li>موجة رفع أسعار الفائدة (2022-2024)</li>
+            <li>أزمة الطاقة العالمية</li>
+            <li>تقلبات أسواق العملات الناشئة</li>
+          </ul>
+        </div>
+        <div class="disclosure-card high-card">
+          <div class="disc-header">
+            <div class="disc-icon high">⚡</div>
+            <div>
+              <h3>الفئة العالية</h3>
+              <p class="disc-period">2020 - 2026</p>
+            </div>
+          </div>
+          <p class="disc-desc">استراتيجيات هجومية حديثة (23 استراتيجية) تستهدف اقتناص الفرص السريعة، لم تجتز اختبار الـ 18 عاماً بسبب طابعها الهجومي، لكنها اجتازت وبمرونة فائقة عهد ترامب الأول وعهد بايدن وعهد ترامب الثاني مع ضراوة جائحة كورونا والحروب الاقتصادية والعسكرية وتقلبات إعادة التسعير.</p>
+          <ul class="disc-events">
+            <li>تقلبات حادة في أزواج العملات الرئيسية</li>
+            <li>مخاطر سياسية مباشرة على الأسعار</li>
+            <li>تقلبات مدفوعة بالعناوين الإخبارية</li>
+            <li>هروب رؤوس الأموال الأسبوعي</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Presidents Timeline -->
+      <div class="timeline-box">
+        <h3 class="timeline-title">رؤساء الولايات المتحدة الأمريكية الذين تم تدريب النماذج على فترات ولايتهم خلال 18 عاماً من التقلبات والأزمات الاقتصادية والسياسية الكبرى</h3>
+        <p class="timeline-subtitle">نظام الاستثمار المُحصّن تدرب على اجتياز كل كارثة اقتصادية وسياسية وجيولوجية</p>
+
+        <!-- Bush -->
+        <div class="president-block">
+          <div class="president-header">
+            <div class="president-avatar bush"><img src="assets/جورج بوش.jpg" alt="جورج بوش الابن"></div>
+            <div>
+              <p class="president-name">جورج بوش الابن</p>
+              <p class="president-term">الفترة الأولى: 2001-2005 | الثانية: 2005-2009</p>
+            </div>
+          </div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">أزمة 2008 المالية الكبرى</p>
+              <p class="crisis-period">2007-2009</p>
+              <p class="crisis-desc">انهيار سوق العقارات الأمريكي، انهيار بنك Lehman Brothers، ركود عالمي كبير. فقدان تريليونات الدولارات وملايين الوظائف.</p>
+              <p class="crisis-result">✅ نظام الاستثمار المُحصّن اجتاز الأزمة بأمان</p>
+            </div>
+            <div class="crisis-card crisis-moderate">
+              <div class="crisis-badge">أزمة</div>
+              <p class="crisis-title">أزمة_DOTCOM و 11 سبتمبر</p>
+              <p class="crisis-period">2001-2003</p>
+              <p class="crisis-desc">انهيار أسهم التكنولوجيا، هجمات 11 سبتمبر، ركود اقتصادي أمريكي.</p>
+              <p class="crisis-result">✅ الصندوق نجا من الاضطرابات</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Obama -->
+        <div class="president-block">
+          <div class="president-header">
+            <div class="president-avatar obama"><img src="assets/باراك أوباما 2008.jpg" alt="باراك أوباما"></div>
+            <div>
+              <p class="president-name">باراك أوباما</p>
+              <p class="president-term">الفترة الأولى: 2009-2013 | الثانية: 2013-2017</p>
+            </div>
+          </div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">أزمة ديون منطقة اليورو السيادية</p>
+              <p class="crisis-period">2010-2015</p>
+              <p class="crisis-desc">أزمة ديون حادة هددت بانهيار العملة الأوروبية الموحدة. الأزمة اليونانية الشهيرة التي كادت تُشطب اليورو.</p>
+              <p class="crisis-result">✅ استراتيجيات EUR صمدت أمام الأزمة</p>
+            </div>
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">صدمة انهيار أسعار النفط العالمية</p>
+              <p class="crisis-period">2014-2016</p>
+              <p class="crisis-desc">انخفاض الأسعار من 115$ إلى أقل من 30$ للبرميل. أثرت بشدة على الدول المصدرة للنفط.</p>
+              <p class="crisis-result">✅ التنوع في أزواج السلع حمى المحفظة</p>
+            </div>
+            <div class="crisis-card crisis-moderate">
+              <div class="crisis-badge">أزمة</div>
+              <p class="crisis-title">أزمة الدين اليوناني</p>
+              <p class="crisis-period">2011-2012</p>
+              <p class="crisis-desc">اليونان على شفا الإفلاس،Grexit، تدخل الاتحاد الأوروبي والصندوق الدولي.</p>
+              <p class="crisis-result">✅ التوزيع الذكي خفف الأثر</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trump 1 -->
+        <div class="president-block">
+          <div class="president-header">
+            <div class="president-avatar trump"><img src="assets/دونالد ترامب 2016.jpg" alt="دونالد ترامب"></div>
+            <div>
+              <p class="president-name">دونالد ترامب (الفترة الأولى)</p>
+              <p class="president-term">2017-2021</p>
+            </div>
+          </div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">الحرب التجارية الأمريكية-الصينية</p>
+              <p class="crisis-period">2018-2020</p>
+              <p class="crisis-desc">فرض تعريفات جمركية واسعة، تصعيد تجاري عالمي، تقلبات حادة في أسواق العملات.</p>
+              <p class="crisis-result">✅ أزواج العملات الرئيسية صمدت</p>
+            </div>
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">جائحة كوفيد-19</p>
+              <p class="crisis-period">2020-2021</p>
+              <p class="crisis-desc">إغلاق اقتصادي كامل عالمياً، شلل سلاسل التوريد، تدخل نقدي غير مسبوق من البنوك المركزية.</p>
+              <p class="crisis-result">✅ الصندوق اجتاز الجائحة بأمان</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biden -->
+        <div class="president-block">
+          <div class="president-header">
+            <div class="president-avatar biden"><img src="assets/بايدن 2020.jpg" alt="جو بايدن"></div>
+            <div>
+              <p class="president-name">جو بايدن</p>
+              <p class="president-term">2021-2025</p>
+            </div>
+          </div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">موجة التضخم الكبرى وأزمة أسعار الفائدة</p>
+              <p class="crisis-period">2022-2024</p>
+              <p class="crisis-desc">ارتفاع قياسي في التضخم، رفع حاد في أسعار الفائدة من الفيدرالي الأمريكي. أزمة طاقة حادة.</p>
+              <p class="crisis-result">✅ التوزيع بين الفئات حمى العوائد</p>
+            </div>
+            <div class="crisis-card crisis-severe">
+              <div class="crisis-badge">كارثة كبرى</div>
+              <p class="crisis-title">أزمة انهيار البنوك المفاجئ</p>
+              <p class="crisis-period">2023</p>
+              <p class="crisis-desc">انهيار بنك Silicon Valley Bank الأمريكي وانهيار بنك Credit Suisse السويسري العريق.</p>
+              <p class="crisis-result">✅ عدم الاعتماد على البنوك التقليدية</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trump 2 -->
+        <div class="president-block">
+          <div class="president-header">
+            <div class="president-avatar trump2"><img src="assets/ترامب 2026.jpg" alt="دونالد ترامب"></div>
+            <div>
+              <p class="president-name">دونالد ترامب (الفترة الثانية)</p>
+              <p class="president-term">2025-2029</p>
+            </div>
+          </div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-moderate">
+              <div class="crisis-badge">تحديات حالية</div>
+              <p class="crisis-title">صدمة إعادة تسعير السياسات</p>
+              <p class="crisis-period">2024-2026</p>
+              <p class="crisis-desc">تقلبات شديدة مدفوعة بالعناوين الإخبارية، هروب رؤوس الأموال الأسبوعي، إعادة تموضع عبر القطاعات.</p>
+              <p class="crisis-result">✅ الخوارزميات التكيفية تتبع التقلبات</p>
+            </div>
+            <div class="crisis-card crisis-moderate">
+              <div class="crisis-badge">تحديات</div>
+              <p class="crisis-title">الحروب الإقليمية والتوترات الجيوسياسية</p>
+              <p class="crisis-period">2025-2026</p>
+              <p class="crisis-desc">التوترات الإيرانية، الحروب الإقليمية، تقلبات أسعار النفط والسلع الأساسية.</p>
+              <p class="crisis-result">✅ التنوع الجغرافي يخفف المخاطر</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="crisis-summary">
+          <div class="crisis-summary-icon">🛡️</div>
+          <div>
+            <p class="crisis-summary-title">الصندوق اجتاز 7 كوارث كبرى في 18 عاماً</p>
+            <p class="crisis-summary-desc">أزمة 2008 | أزمة اليورو | انهيار النفط | الحرب التجارية | كوفيد | التضخم | انهيار البنوك | إعادة التسعير</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Warning -->
+      <div class="final-warning">
+        <span class="fw-icon">⚠️</span>
+        <h4>تنبيه مهم</h4>
+        <p>الأداء السابق لا يضمن النتائج المستقبلية. الأرقام المعروضة مبنية على اختبارات تاريخية وقد تتضمن مخاطر مرتفعة. يجب مراجعة درجة المخاطرة قبل اتخاذ أي قرار استثماري. لا نقدم أي وعود بعائد مضمون.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>كيف يعمل؟</h2>
+        <p class="section-desc">ثلاث خطوات بسيطة لحساب عائدك الاستثماري</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">💰</div>
+          <h3>أدخل رأس المال</h3>
+          <p>اكتب المبلغ المستثمر أو اختر من المبالغ الجاهزة. الحد الأدنى 5,000 دولار.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">🎚️</div>
+          <h3>حدد مستوى المخاطرة</h3>
+          <p>اختر نسب التوزيع بين الفئات الآمنة والمتوسطة والعالية. مجموع النسب يجب أن يساوي 100%.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">📈</div>
+          <h3>احصل على النتائج</h3>
+          <p>تظهر فوراً حاسبة العائد الأسبوعي والشهري والسنوي مع تفاصيل كل استراتيجية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge primary">
+          <span>❓</span> أسئلة شائعة
+        </div>
+        <h2>الأسئلة المتكررة</h2>
+        <p class="section-desc">إجابات على أهم الأسئلة حول منصتنا</p>
+      </div>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>هل العائد مضمون؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>لا. الأرقام المعروضة مبنية على اختبارات تاريخية ولا تمثل ضماناً للأداء المستقبلي. الأداء السابق لا يضمن النتائج المستقبلية.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>ما الحد الأدنى لرأس المال؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>الحد الأدنى لبدء التوزيع هو 5,000 دولار. لكن بعض الفئات الآمنة قد تتطلب حدوداً أعلى (مثل 18,000 دولار للفئة الآمنة).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>كيف يتم اختيار الاستراتيجيات؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>يتم اختيار الاستراتيجيات بناءً على خوارزمية تقييم تأخذ في الابعاد: نسبة الربح، معامل الاسترداد، نسبة الصفقات الرابحة، أقصى تراجع، والعائد السنوي. مع مراعاة الحد الأدنى لكل استراتيجية.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>هل يمكنني تعديل التوزيع؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>نعم. يمكنك تعديل نسب المخاطرة في أي وقت. لكن يجب أن مجموع النسب يساوي 100%، ونسبة العالية لا تتجاوز نسبة الآمن.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>ماذا يعني السحب الأقصى؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>أقصى تراجع هو أكبر خسارة متوقعة بناءً على البيانات التاريخية. يمثل النقطة العالية من أقصى ربح إلى أقصى خسارة قبل التعافي.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>ما الفرق بين العرض التقديري والتنفيذي؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>العرض التقديري يوزع المبلغ نسبياً لعرض العائد المتوقع. العرض التنفيذي يراعي الحد الأدنى لكل استراتيجية وقد يترك مبالغ غير مستخدمة.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>ما أتعاب التشغيل؟</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>تُخصم نسبة 20% من الأرباح كأتعاب تشغيل لجميع الفئات (آمن، متوسط، عالي). الأرقام المعروضة في النتائج هي بعد احتساب هذه الأتعاب.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>ابدأ رحلتك الاستثمارية اليوم</h2>
+      <p class="cta-desc">احسب عائدك، راجع النتائج، وتواصل مع مستشار معتمد لبدء التنفيذ.</p>
+      <div class="cta-buttons">
+        <a href="#calculator-section" class="btn-calc-gold">📊 احسب عائدك الآن</a>
+        <a href="https://wa.me/Wesam.Nafaa" target="_blank" rel="noopener noreferrer" class="btn-cta-outline">📞 تواصل مع مستشار</a>
+        <a href="https://docs.google.com/spreadsheets/d/1gfLYX7eGwTM6qYXiE7S6bDiSdCVBshiqTyiWoyazKX0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-cta-outline">📄 تحميل التقرير الشامل - 18 عاماً من الثبات والإزدهار في أقسى ظروف السوق</a>
+        <a href="../docs/نظام الاستثمار المُحصّن السّيادي - التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية - واستقرار النمو المالي (2008-2026).pdf" target="_blank" rel="noopener noreferrer" class="btn-cta-outline">📊 التقديم الفني والرياضي والعملياتي والتحليلي</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="logo footer-logo">
+          <div class="logo-icon">🛡️</div>
+          <span>نظام الاستثمار المُحصّن</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">سياسة الخصوصية</a>
+          <a href="#">الشروط والأحكام</a>
+          <a href="#">تواصل معنا</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">إخلاء المسؤولية: الأداء السابق لا يضمن النتائج المستقبلية. الأرقام المعروضة مبنية على اختبارات تاريخية وقد تتضمن مخاطر مرتفعة. يجب مراجعة درجة المخاطرة قبل اتخاذ أي قرار استثماري. نظام الاستثمار المُحصّن لا يقدم أي وعود بعائد مضمون.</p>
+        <p class="footer-copy">© 2026 نظام الاستثمار المُحصّن. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/strategy.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/pdf-report.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

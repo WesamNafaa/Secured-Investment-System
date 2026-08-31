@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام الاستثمار المُحصّن</title>
+  <meta name="description" content="احسب عائدك الاستثماري المتوقع بثقة ووضوح. توزيع ذكي على استراتيجيات مُحصّنة بناءً على رأس المال ومستوى المخاطرة.">
+  <meta name="keywords" content="نظام الاستثمار المُحصّن, حاسبة استثمارية, حاسبة العائد, توزيع رأس المال, إدارة المخاطر, استراتيجيات التداول, محافظ استثمارية, استثمار آمن, استثمار متوسط المخاطر, استثمار عالي المخاطر, العائد السنوي, العائد الشهري, العائد الأسبوعي, حساب المخاطر, استقرار العملات, خوارزميات هندسية, تحليل الاستثمار, نظام استثمار مغلق">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='%23D4AF37' stroke='%23070A12'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-new.css">
+  <script src="js/lib/jspdf.umd.min.js"></script>
+  <script src="js/lib/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+  <!-- Header — Glass + Gold Hairline -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span>نظام الاستثمار المُحصّن</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#calculator-section">الحاسبة</a>
+        <a href="#results-section">النتائج</a>
+        <a href="#disclosure">المخاطرة</a>
+        <a href="#how-it-works">كيف يعمل</a>
+        <a href="#faq">الأسئلة</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="تبديل المظهر" title="تبديل فاتح / داكن">
+          <span><span>☀️</span><span>🌙</span></span>
+        </button>
+        <a href="https://docs.google.com/spreadsheets/d/1gfLYX7eGwTM6qYXiE7S6bDiSdCVBshiqTyiWoyazKX0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-contact">📄 تحميل التقرير الشامل — 18 عاماً</a>
+        <a href="../docs/نظام الاستثمار المُحصّن السّيادي - التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية - واستقرار النمو المالي (2008-2026).pdf" target="_blank" rel="noopener noreferrer" class="btn-login">التقديم الهندسي والعملياتي</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- KPI Strip — Breathable -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon">📊</div>
+        <div><p class="trust-label">اختبارات تاريخية</p><p class="trust-sub">18 عاماً من البيانات</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <div><p class="trust-label">إدارة مخاطر</p><p class="trust-sub">تصنيف صارم</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✅</div>
+        <div><p class="trust-label">182,145 صفقة ناجحة</p><p class="trust-sub">إجتازتها الخوارزميات بنجاح</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔄</div>
+        <div><p class="trust-label">3,753,462 ساعة عمل</p><p class="trust-sub">النظام ينبض على مدار الساعة</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Mobile Actions — تظهر فقط على الجوال تحت البطاقات الأربع -->
+  <div class="hero-mobile-actions">
+    <a href="https://docs.google.com/spreadsheets/d/1gfLYX7eGwTM6qYXiE7S6bDiSdCVBshiqTyiWoyazKX0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-mobile-gold">📄 تحميل التقرير الشامل — 18 عاماً</a>
+    <a href="../docs/نظام الاستثمار المُحصّن السّيادي - التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية - واستقرار النمو المالي (2008-2026).pdf" target="_blank" rel="noopener noreferrer" class="btn-mobile-outline">📊 التقديم الهندسي والعملياتي</a>
+  </div>
+
+  <!-- Hero + App Shell -->
+  <section class="hero" id="calculator-section">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge"><span>⚡</span> شفافية ودقة</div>
+        <h1>احسب عائدك الاستثماري المتوقع<br><span class="gold-text">بثقة ووضوح</span></h1>
+        <p class="hero-desc">أدخل رأس المال، حدد مستوى المخاطرة، واحصل على توزيع ذكي مبني على بيانات أداء تاريخية — في لوحة تحكم تنفسية بمعايير الـ Private Banking.</p>
+      </div>
+
+      <div class="app-shell is-idle" id="app-shell">
+        <!-- Sticky Control Panel -->
+        <aside class="control-panel" id="control-panel">
+          <div class="calc-card" id="calc-card">
+            <div class="calc-header">
+              <div class="calc-header-icon">$</div>
+              <div>
+                <h2>رأس المال الاستثماري</h2>
+                <p class="muted-text">أدخل المبلغ بالدولار الأمريكي</p>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="input-label">المبلغ (USD)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="text" id="capital-input" inputmode="numeric" placeholder="5,000" class="capital-input" dir="ltr">
+              </div>
+              <p class="error-text" id="capital-error"></p>
+            </div>
+
+            <div class="quick-amounts" id="quick-amounts">
+              <button class="chip" data-amount="10000">$10,000</button>
+              <button class="chip" data-amount="20000">$20,000</button>
+              <button class="chip" data-amount="50000">$50,000</button>
+              <button class="chip active" data-amount="100000">$100,000</button>
+              <button class="chip" data-amount="250000">$250,000</button>
+              <button class="chip" data-amount="500000">$500,000</button>
+              <button class="chip" data-amount="1000000">$1,000,000</button>
+              <button class="chip" data-amount="5000000">$5,000,000</button>
+              <button class="chip" data-amount="10000000">$10,000,000</button>
+            </div>
+
+            <div class="mode-toggle">
+              <label class="input-label">النمط</label>
+              <div class="mode-buttons">
+                <button class="mode-btn active" data-mode="estimate">عرض تقديري</button>
+                <button class="mode-btn" data-mode="execute">عرض تنفيذي</button>
+              </div>
+            </div>
+
+            <div class="risk-section">
+              <div class="risk-header">
+                <label class="input-label">توزيع المخاطرة</label>
+                <div class="risk-total">
+                  <span id="risk-total" class="risk-total-num">100%</span>
+                  <span id="risk-remaining" class="risk-remaining"></span>
+                </div>
+              </div>
+              <div class="risk-progress"><div class="risk-progress-bar" id="risk-progress-bar"></div></div>
+              <p class="error-text" id="risk-error"></p>
+
+              <div class="risk-category" data-category="safe">
+                <div class="risk-cat-header">
+                  <div class="risk-cat-info">
+                    <div class="risk-cat-icon safe">🛡️</div>
+                    <div><span class="risk-cat-name">آمن</span><p class="risk-cat-desc">19 استراتيجية صمدت 18 عاماً</p></div>
+                  </div>
+                  <span class="risk-cat-value number" id="risk-safe-value">50%</span>
+                </div>
+                <input type="range" id="risk-safe-slider" min="0" max="100" step="5" value="50" class="risk-slider safe">
+                <div class="chip-group" id="risk-safe-chips"></div>
+              </div>
+
+              <div class="risk-category" data-category="average">
+                <div class="risk-cat-header">
+                  <div class="risk-cat-info">
+                    <div class="risk-cat-icon average">📈</div>
+                    <div><span class="risk-cat-name">متوسط</span><p class="risk-cat-desc">تجاوزت 18 عاماً — بيانات 6 سنوات</p></div>
+                  </div>
+                  <span class="risk-cat-value number" id="risk-average-value">30%</span>
+                </div>
+                <input type="range" id="risk-average-slider" min="0" max="100" step="5" value="30" class="risk-slider average">
+                <div class="chip-group" id="risk-average-chips"></div>
+              </div>
+
+              <div class="risk-category" data-category="high">
+                <div class="risk-cat-header">
+                  <div class="risk-cat-info">
+                    <div class="risk-cat-icon high">⚡</div>
+                    <div><span class="risk-cat-name">عالٍ</span><p class="risk-cat-desc">23 استراتيجية هجومية حديثة</p></div>
+                  </div>
+                  <span class="risk-cat-value number" id="risk-high-value">20%</span>
+                </div>
+                <input type="range" id="risk-high-slider" min="0" max="100" step="5" value="20" class="risk-slider high">
+                <div class="chip-group" id="risk-high-chips"></div>
+              </div>
+
+              <div class="presets-section">
+                <p class="presets-label">جاهز سريع:</p>
+                <div class="presets-chips" id="presets-chips">
+                  <button class="chip preset" data-preset="100,0,0">شديد الأمان</button>
+                  <button class="chip preset" data-preset="70,25,5">محافظ</button>
+                  <button class="chip preset" data-preset="50,30,20">متوازن</button>
+                  <button class="chip preset" data-preset="35,40,25">نمو</button>
+                  <button class="chip preset" data-preset="20,40,40">مرتفع المخاطرة</button>
+                  <button class="chip preset" data-preset="0,100,0">سريع النمو</button>
+                  <button class="chip preset" data-preset="0,0,100">هجومي</button>
+                  <button class="chip preset" data-preset="10,20,70">سريع</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-actions">
+              <button class="btn-calculate" id="btn-calculate" disabled><span>📊</span> احسب العائد الآن</button>
+              <button class="btn-reset" id="btn-reset" style="display:none;">إعادة تعيين</button>
+            </div>
+            <p class="estimate-note" id="estimate-note">النتائج تقديرية لأغراض العرض. التنفيذ الفعلي يعتمد على الحد الأدنى لكل استراتيجية.</p>
+          </div>
+        </aside>
+
+        <!-- Dashboard Main -->
+        <div class="dashboard-main">
+          <!-- Empty State — قبل الحساب -->
+          <div class="empty-state" id="dashboard-empty">
+            <div class="empty-state-icon">📊</div>
+            <h3>لوحة النتائج تنتظرك</h3>
+            <p>أدخل رأس المال وحدد توزيع المخاطرة ثم اضغط <b>احسب العائد الآن</b> لترى التوزيع الذكي والعوائد الصافية والرسوم البيانية في داشبورد تنفسي فاخر.</p>
+            <div class="hint">💡 مجموع نسب المخاطرة يجب أن يساوي 100% — اللوحة مثبتة Sticky على الديسكتوب</div>
+          </div>
+
+          <!-- Results Dashboard — IDs محفوظة 100% -->
+          <section class="results-section" id="results-section" style="display:none;">
+            <div class="section-header">
+              <h2>نتائج التحليل</h2>
+              <p class="section-desc">توزيع استثمارك بناءً على البيانات التاريخية</p>
+            </div>
+            <div class="warnings-container" id="warnings-container"></div>
+            <div class="return-cards">
+              <div class="return-card">
+                <p class="return-label">العائد الأسبوعي (صافي)</p>
+                <p class="return-value number success" id="res-weekly">$0</p>
+                <p class="return-pct number muted" id="res-weekly-pct">0.00%</p>
+                <p class="return-fee number muted" id="res-weekly-fee"></p>
+              </div>
+              <div class="return-card">
+                <p class="return-label">العائد الشهري (صافي)</p>
+                <p class="return-value number success" id="res-monthly">$0</p>
+                <p class="return-pct number muted" id="res-monthly-pct">0.00%</p>
+                <p class="return-fee number muted" id="res-monthly-fee"></p>
+              </div>
+              <div class="return-card">
+                <p class="return-label">العائد السنوي (صافي)</p>
+                <p class="return-value number success" id="res-yearly">$0</p>
+                <p class="return-pct number muted" id="res-yearly-pct">0.00%</p>
+                <p class="return-fee number muted" id="res-yearly-fee"></p>
+              </div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-card danger-card">
+                <div class="summary-card-header"><span>📉</span><p>أقصى تراجع تاريخي متوقع</p></div>
+                <p class="summary-big number danger" id="res-drawdown">$0</p>
+                <p class="summary-pct number muted" id="res-drawdown-pct">0.00%</p>
+                <p class="drawdown-freq-inline" id="res-drawdown-freq"></p>
+                <div class="drawdown-freq-notes" id="drawdown-freq-notes">
+                  <span class="freq-note safe-note">🛡️ الآمن: مرة كل 18 عاماً</span>
+                  <span class="freq-note avg-note">📈 المتوسط: مرة كل 5 سنوات</span>
+                  <span class="freq-note high-note">⚡ العالي: Hazard — أكثر من مرة خلال 18 عاماً</span>
+                </div>
+              </div>
+              <div class="summary-card info-card">
+                <div class="summary-card-header"><span>📈</span><p>ملخص المحفظة</p></div>
+                <div class="summary-grid">
+                  <div><p class="summary-grid-label">الاستراتيجيات</p><p class="summary-grid-value number" id="res-total-strategies">0</p></div>
+                  <div><p class="summary-grid-label">رأس المال المستخدم</p><p class="summary-grid-value number" id="res-used-capital">$0</p></div>
+                  <div><p class="summary-grid-label">غير المستغل</p><p class="summary-grid-value number warning" id="res-unallocated">$0</p></div>
+                  <div><p class="summary-grid-label">العائد قبل Fees</p><p class="summary-grid-value number" id="res-yearly-gross">$0</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="charts-row">
+              <div class="chart-card">
+                <h3><span>🥧</span> توزيع المخاطرة</h3>
+                <canvas id="pie-chart" width="300" height="300"></canvas>
+                <div class="chart-legend" id="pie-legend"></div>
+              </div>
+              <div class="chart-card">
+                <h3><span>📊</span> العائد حسب الفترة</h3>
+                <canvas id="bar-chart" width="400" height="280"></canvas>
+                <div class="chart-legend">
+                  <div class="legend-item"><span class="legend-dot gold"></span> قبل Fees</div>
+                  <div class="legend-item"><span class="legend-dot green"></span> بعد Fees</div>
+                </div>
+              </div>
+            </div>
+            <div class="disclaimer-box">
+              <p>النتائج مبنية على بيانات تاريخية ولا تمثل ضماناً للأداء المستقبلي. الأرقام المعروضة بعد احتساب أتعاب التشغيل (20% لجميع الفئات).</p>
+              <button class="btn-calc-gold" style="margin-top:14px;font-size:13px;padding:10px 18px" data-action="download-pdf">📄 تحميل التقرير كـ PDF</button>
+            </div>
+          </section>
+
+          <!-- Strategy Table — IDs محفوظة -->
+          <section class="table-section" id="table-section" style="display:none;">
+            <div class="section-header" style="margin-top:18px">
+              <h2>الاستراتيجيات المختارة</h2>
+              <p class="section-desc">تفاصيل توزيع رأس المال على كل استراتيجية</p>
+            </div>
+            <div class="table-scroll-wrap desktop-only" id="table-scroll-wrap">
+              <button class="table-scroll-btn prev" id="table-scroll-prev" aria-label="مرّر لليمين" title="مرّر لليمين">‹</button>
+              <div class="table-wrapper" id="table-wrapper">
+                <table class="strategy-table" id="strategy-table">
+                  <thead>
+                    <tr>
+                      <th>الرمز</th><th>الاستراتيجية</th><th>المخاطرة</th><th>Lot Size</th><th>الحد الأدنى</th><th>المخصص</th><th>أسبوعي</th><th>شهري</th><th>سنوي</th><th>نسبة العائد</th><th>أقصى تراجع</th><th>PF</th><th>Win %</th><th>Fees</th><th>الفترة</th>
+                    </tr>
+                  </thead>
+                  <tbody id="strategy-tbody"></tbody>
+                </table>
+              </div>
+              <button class="table-scroll-btn next" id="table-scroll-next" aria-label="مرّر لليسار" title="مرّر لليسار">›</button>
+            </div>
+            <div class="mobile-cards mobile-only" id="mobile-strategy-cards"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risk Disclosure — محفوظ كاملاً -->
+  <section class="disclosure-section" id="disclosure">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge danger"><span>⚠️</span> إستراتيجيات الأمان والمخاطرة</div>
+        <h2>تصنيف المخاطرة</h2>
+        <p class="section-desc">فهم المخاطرة هو الخطوة الأولى نحو الاستثمار الواعي</p>
+      </div>
+      <div class="disclosure-cards">
+        <div class="disclosure-card safe-card">
+          <div class="disc-header"><div class="disc-icon safe">🛡️</div><div><h3>الفئة الآمنة</h3><p class="disc-period">2008 - 2026</p></div></div>
+          <p class="disc-desc">تشكل هذه الفئة العمود الفقري للنظام، وإثبات الأمان والاستقرار وتضم 19 استراتيجية صمدت وازدهرت خلال الـ 18 عاماً (2008-2026).</p>
+          <ul class="disc-events">
+            <li>أزمة 2008 المالية الكبرى (الركود الكبير)</li><li>أزمة ديون منطقة اليورو (2010-2015)</li><li>انهيار أسعار النفط (2014-2016)</li><li>جائحة كوفيد-19 (2020-2021)</li><li>موجة التضخم وأزمة الفائدة (2022-2024)</li><li>أزمة انهيار البنوك (2023)</li><li>تقلبات إعادة التسعير (2024-2026)</li>
+          </ul>
+        </div>
+        <div class="disclosure-card avg-card">
+          <div class="disc-header"><div class="disc-icon average">📈</div><div><h3>الفئة المتوسطة</h3><p class="disc-period">2020 - 2026</p></div></div>
+          <p class="disc-desc">تجاوزت مِحّن وأزمات الـ 18 عاماً وتم تشغيلها بشكل متوسط المخاطرة لتزدهر على بيانات آخر 6 سنوات لتعظيم الربحية (جائحة كورونا ونهاية ولاية ترامب الأولى وعهد بايدن وولاية ترامب الثانية)، مع تنبيه شفاف: "تشهد هذه الفئة انخفاضاً حاداً كل 5 سنوات" وفقاً للرصد الفني والتقني والخوارزمي مما يجعلها آمنة تاريخياً ولكنها متوسطة المخاطرة تشغيلياً.</p>
+          <ul class="disc-events">
+            <li>تقلبات ما بعد الجائحة (2020-2022)</li><li>موجة رفع أسعار الفائدة (2022-2024)</li><li>أزمة الطاقة العالمية</li><li>تقلبات أسواق العملات الناشئة</li>
+          </ul>
+        </div>
+        <div class="disclosure-card high-card">
+          <div class="disc-header"><div class="disc-icon high">⚡</div><div><h3>الفئة العالية</h3><p class="disc-period">2020 - 2026</p></div></div>
+          <p class="disc-desc">استراتيجيات هجومية حديثة (23 استراتيجية) تستهدف اقتناص الفرص السريعة، لم تجتز اختبار الـ 18 عاماً بسبب طابعها الهجومي، لكنها اجتازت وبمرونة فائقة عهد ترامب الأول وعهد بايدن وعهد ترامب الثاني مع ضراوة جائحة كورونا والحروب الاقتصادية والعسكرية وتقلبات إعادة التسعير.</p>
+          <ul class="disc-events">
+            <li>تقلبات حادة في أزواج العملات الرئيسية</li><li>مخاطر سياسية مباشرة على الأسعار</li><li>تقلبات مدفوعة بالعناوين الإخبارية</li><li>هروب رؤوس الأموال الأسبوعي</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-box">
+        <h3 class="timeline-title">رؤساء الولايات المتحدة الأمريكية الذين تم تدريب النماذج على فترات ولايتهم خلال 18 عاماً من التقلبات والأزمات الاقتصادية والسياسية الكبرى</h3>
+        <p class="timeline-subtitle">نظام الاستثمار المُحصّن تدرب على اجتياز كل كارثة اقتصادية وسياسية وجيولوجية</p>
+        <div class="president-block">
+          <div class="president-header"><div class="president-avatar bush"><img src="assets/جورج بوش.jpg" alt="جورج بوش الابن"></div><div><p class="president-name">جورج بوش الابن</p><p class="president-term">الفترة الأولى: 2001-2005 | الثانية: 2005-2009</p></div></div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">أزمة 2008 المالية الكبرى</p><p class="crisis-period">2007-2009</p><p class="crisis-desc">انهيار سوق العقارات الأمريكي، انهيار بنك Lehman Brothers، ركود عالمي كبير. فقدان تريليونات الدولارات وملايين الوظائف.</p><p class="crisis-result">✅ نظام الاستثمار المُحصّن اجتاز الأزمة بأمان</p></div>
+            <div class="crisis-card crisis-moderate"><div class="crisis-badge">أزمة</div><p class="crisis-title">أزمة_DOTCOM و 11 سبتمبر</p><p class="crisis-period">2001-2003</p><p class="crisis-desc">انهيار أسهم التكنولوجيا، هجمات 11 سبتمبر، ركود اقتصادي أمريكي.</p><p class="crisis-result">✅ الصندوق نجا من الاضطرابات</p></div>
+          </div>
+        </div>
+        <div class="president-block">
+          <div class="president-header"><div class="president-avatar obama"><img src="assets/باراك أوباما 2008.jpg" alt="باراك أوباما"></div><div><p class="president-name">باراك أوباما</p><p class="president-term">الفترة الأولى: 2009-2013 | الثانية: 2013-2017</p></div></div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">أزمة ديون منطقة اليورو السيادية</p><p class="crisis-period">2010-2015</p><p class="crisis-desc">أزمة ديون حادة هددت بانهيار العملة الأوروبية الموحدة. الأزمة اليونانية الشهيرة التي كادت تُشطب اليورو.</p><p class="crisis-result">✅ استراتيجيات EUR صمدت أمام الأزمة</p></div>
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">صدمة انهيار أسعار النفط العالمية</p><p class="crisis-period">2014-2016</p><p class="crisis-desc">انخفاض الأسعار من 115$ إلى أقل من 30$ للبرميل. أثرت بشدة على الدول المصدرة للنفط.</p><p class="crisis-result">✅ التنوع في أزواج السلع حمى المحفظة</p></div>
+            <div class="crisis-card crisis-moderate"><div class="crisis-badge">أزمة</div><p class="crisis-title">أزمة الدين اليوناني</p><p class="crisis-period">2011-2012</p><p class="crisis-desc">اليونان على شفا الإفلاس،Grexit، تدخل الاتحاد الأوروبي والصندوق الدولي.</p><p class="crisis-result">✅ التوزيع الذكي خفف الأثر</p></div>
+          </div>
+        </div>
+        <div class="president-block">
+          <div class="president-header"><div class="president-avatar trump"><img src="assets/دونالد ترامب 2016.jpg" alt="دونالد ترامب"></div><div><p class="president-name">دونالد ترامب (الفترة الأولى)</p><p class="president-term">2017-2021</p></div></div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">الحرب التجارية الأمريكية-الصينية</p><p class="crisis-period">2018-2020</p><p class="crisis-desc">فرض تعريفات جمركية واسعة، تصعيد تجاري عالمي، تقلبات حادة في أسواق العملات.</p><p class="crisis-result">✅ أزواج العملات الرئيسية صمدت</p></div>
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">جائحة كوفيد-19</p><p class="crisis-period">2020-2021</p><p class="crisis-desc">إغلاق اقتصادي كامل عالمياً، شلل سلاسل التوريد، تدخل نقدي غير مسبوق من البنوك المركزية.</p><p class="crisis-result">✅ الصندوق اجتاز الجائحة بأمان</p></div>
+          </div>
+        </div>
+        <div class="president-block">
+          <div class="president-header"><div class="president-avatar biden"><img src="assets/بايدن 2020.jpg" alt="جو بايدن"></div><div><p class="president-name">جو بايدن</p><p class="president-term">2021-2025</p></div></div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">موجة التضخم الكبرى وأزمة أسعار الفائدة</p><p class="crisis-period">2022-2024</p><p class="crisis-desc">ارتفاع قياسي في التضخم، رفع حاد في أسعار الفائدة من الفيدرالي الأمريكي. أزمة طاقة حادة.</p><p class="crisis-result">✅ التوزيع بين الفئات حمى العوائد</p></div>
+            <div class="crisis-card crisis-severe"><div class="crisis-badge">كارثة كبرى</div><p class="crisis-title">أزمة انهيار البنوك المفاجئ</p><p class="crisis-period">2023</p><p class="crisis-desc">انهيار بنك Silicon Valley Bank الأمريكي وانهيار بنك Credit Suisse السويسري العريق.</p><p class="crisis-result">✅ عدم الاعتماد على البنوك التقليدية</p></div>
+          </div>
+        </div>
+        <div class="president-block">
+          <div class="president-header"><div class="president-avatar trump2"><img src="assets/ترامب 2026.jpg" alt="دونالد ترامب"></div><div><p class="president-name">دونالد ترامب (الفترة الثانية)</p><p class="president-term">2025-2029</p></div></div>
+          <div class="crisis-grid">
+            <div class="crisis-card crisis-moderate"><div class="crisis-badge">تحديات حالية</div><p class="crisis-title">صدمة إعادة تسعير السياسات</p><p class="crisis-period">2024-2026</p><p class="crisis-desc">تقلبات شديدة مدفوعة بالعناوين الإخبارية، هروب رؤوس الأموال الأسبوعي، إعادة تموضع عبر القطاعات.</p><p class="crisis-result">✅ الخوارزميات التكيفية تتبع التقلبات</p></div>
+            <div class="crisis-card crisis-moderate"><div class="crisis-badge">تحديات</div><p class="crisis-title">الحروب الإقليمية والتوترات الجيوسياسية</p><p class="crisis-period">2025-2026</p><p class="crisis-desc">التوترات الإيرانية، الحروب الإقليمية، تقلبات أسعار النفط والسلع الأساسية.</p><p class="crisis-result">✅ التنوع الجغرافي يخفف المخاطر</p></div>
+          </div>
+        </div>
+        <div class="crisis-summary">
+          <div class="crisis-summary-icon">🛡️</div>
+          <div><p class="crisis-summary-title">الصندوق اجتاز 7 كوارث كبرى في 18 عاماً</p><p class="crisis-summary-desc">أزمة 2008 | أزمة اليورو | انهيار النفط | الحرب التجارية | كوفيد | التضخم | انهيار البنوك | إعادة التسعير</p></div>
+        </div>
+      </div>
+      <div class="final-warning">
+        <span class="fw-icon">⚠️</span><h4>تنبيه مهم</h4>
+        <p>إخلاء مسؤولية: نظام الاستثمار المٌحصّن مبني على تشغيل تاريخي دقيق ومحاكاة حقيقية للأداء (2008-2026). الأداء السابق في الأسواق الإقتصادية، رغم دقته الإحصائية ونتائجه الممنهجة، لا يعد ضماناً حتمياً للنتائج المستقبلية. الاستثمار المالي والتجارة بالأصول تتضمن مخاطر، ويجب على المؤسسات إجراء تقييم امتثال داخلي قبل البدء في التنفيذ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header"><h2>كيف يعمل؟</h2><p class="section-desc">ثلاث خطوات بسيطة لحساب عائدك الاستثماري</p></div>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-num">01</div><div class="step-icon">💰</div><h3>أدخل رأس المال</h3><p>اكتب المبلغ المستثمر أو اختر من المبالغ الجاهزة. الحد الأدنى 5,000 دولار.</p></div>
+        <div class="step-card"><div class="step-num">02</div><div class="step-icon">🎚️</div><h3>حدد مستوى المخاطرة</h3><p>اختر نسب التوزيع بين الفئات الآمنة والمتوسطة والعالية. مجموع النسب يجب أن يساوي 100%.</p></div>
+        <div class="step-card"><div class="step-num">03</div><div class="step-icon">📈</div><h3>احصل على النتائج</h3><p>تظهر فوراً حاسبة العائد الأسبوعي والشهري والسنوي مع تفاصيل كل استراتيجية.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header"><div class="section-badge primary"><span>❓</span> أسئلة شائعة</div><h2>الأسئلة المتكررة</h2><p class="section-desc">إجابات على أهم الأسئلة حول منصتنا</p></div>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item"><button class="faq-question"><span>هل العائد مضمون؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>لا. الأرقام المعروضة مبنية على اختبارات تاريخية ولا تمثل ضماناً للأداء المستقبلي. الأداء السابق لا يضمن النتائج المستقبلية.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>ما الحد الأدنى لرأس المال؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>الحد الأدنى لبدء التوزيع هو 5,000 دولار. لكن بعض الفئات الآمنة قد تتطلب حدوداً أعلى (مثل 18,000 دولار للفئة الآمنة).</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>كيف يتم اختيار الاستراتيجيات؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>يتم اختيار الاستراتيجيات بناءً على خوارزمية تقييم تأخذ في الابعاد: نسبة الربح، معامل الاسترداد، نسبة الصفقات الرابحة، أقصى تراجع، والعائد السنوي. مع مراعاة الحد الأدنى لكل استراتيجية.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>هل يمكنني تعديل التوزيع؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>نعم. يمكنك تعديل نسب المخاطرة في أي وقت. لكن يجب أن مجموع النسب يساوي 100%، ونسبة العالية لا تتجاوز نسبة الآمن.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>ماذا يعني السحب الأقصى؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>أقصى تراجع هو أكبر خسارة متوقعة بناءً على البيانات التاريخية. يمثل النقطة العالية من أقصى ربح إلى أقصى خسارة قبل التعافي.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>ما الفرق بين العرض التقديري والتنفيذي؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>العرض التقديري يوزع المبلغ نسبياً لعرض العائد المتوقع. العرض التنفيذي يراعي الحد الأدنى لكل استراتيجية وقد يترك مبالغ غير مستخدمة.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>ما أتعاب التشغيل؟</span><span class="faq-chevron">▾</span></button><div class="faq-answer"><p>تُخصم نسبة 20% من الأرباح كأتعاب تشغيل لجميع الفئات (آمن، متوسط، عالي). الأرقام المعروضة في النتائج هي بعد احتساب هذه الأتعاب.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الوثائق الرسمية — قسم مستقل للملفات الثلاثة الموجودة في الـ CTA -->
+  <section class="docs-section" id="docs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge primary"><span>📁</span> الوثائق الرسمية</div>
+        <h2>الوثائق الأساسية المعتمدة</h2>
+        <p class="section-desc">المراجع الثلاث التي بُنيت عليها الحاسبة والتحليل — افتحها في تبويب جديد</p>
+      </div>
+      <div class="docs-grid">
+        <a href="https://docs.google.com/spreadsheets/d/1gfLYX7eGwTM6qYXiE7S6bDiSdCVBshiqTyiWoyazKX0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <div class="doc-icon"><span>📄</span></div>
+          <div class="doc-content">
+            <h3>تحميل التقرير الشامل — 18 عاماً</h3>
+            <p>إحصاء التشغيل العملياتي (2008-2026) — الأصول والتحليل والنتائج وقدرة الثبات والنمو.</p>
+            <span class="doc-btn">📊 فتح التقرير <span class="doc-arrow">↗</span></span>
+          </div>
+        </a>
+        <a href="../docs/نظام الاستثمار المُحصّن السّيادي - التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية - واستقرار النمو المالي (2008-2026).pdf" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <div class="doc-icon"><span>📊</span></div>
+          <div class="doc-content">
+            <h3>التقديم الهندسي والعملياتي</h3>
+            <p>التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية واستقرار النمو المالي.</p>
+            <span class="doc-btn">📖 فتح التقديم <span class="doc-arrow">↗</span></span>
+          </div>
+        </a>
+        <a href="../docs/الدليل الإرشادي للتدخل الآمن - بحسب ستركشر الهيكلية الأكاديمية والعملياتية الموسعة.pdf" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <div class="doc-icon"><span>📘</span></div>
+          <div class="doc-content">
+            <h3>الدليل الإرشادي للتدخل الآمن</h3>
+            <p>بحسب ستركشر الهيكلية الأكاديمية والعملياتية الموسعة — بروتوكول التدخل عند اختبار السيولة.</p>
+            <span class="doc-btn">🛡️ فتح الدليل <span class="doc-arrow">↗</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- المراجع التثقيفية — قسم جديد -->
+  <section class="edu-section" id="edu">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge primary"><span>📚</span> المراجع التثقيفية</div>
+        <h2>تعلّم من 18 عاماً من الصمود</h2>
+        <p class="section-desc">مرجعان أكاديميان يشرحان الرحلة الهندسية والمالية — افتحهما في تبويب جديد</p>
+      </div>
+      <div class="edu-feature-grid">
+        <a href="../docs/مرجع تثقيفي - دروس من 18 عاماً في استقرار العملات (2008-2026) - رحلة الصمود عبر العواصف المالية.pdf" target="_blank" rel="noopener noreferrer" class="edu-feature-card edu-feature-card--storm">
+          <div class="edu-feature-visual">
+            <div class="edu-feature-glow"></div>
+            <span class="edu-feature-year">2008 — 2026</span>
+            <span class="edu-feature-big">18</span>
+            <span class="edu-feature-label">عاماً من الصمود</span>
+            <div class="edu-feature-icon">🌊</div>
+          </div>
+          <div class="edu-feature-body">
+            <div class="edu-feature-badge"><span>📚</span> مرجع تثقيفي — دروس وعِبر</div>
+            <h3>دروس من 18 عاماً في استقرار العملات</h3>
+            <p class="edu-feature-desc">رحلة الصمود عبر العواصف المالية — كيف حوّلت الخوارزميات 7 كوارث كبرى إلى بيانات تشغيل مستقرة.</p>
+            <div class="edu-feature-stats">
+              <span><b>18</b> عام</span>
+              <span><b>7</b> أزمات</span>
+              <span><b>182K</b> صفقة</span>
+            </div>
+            <span class="edu-feature-btn">📖 فتح المرجع الكامل <span class="edu-arrow">↗</span></span>
+          </div>
+        </a>
+        <a href="../docs/مرجع تثقيفي - الدليل الأكاديمي في الخوارزميات الهندسية - فك شفرة البنية التحتية لنظام الاستثمار المُحصّن.pdf" target="_blank" rel="noopener noreferrer" class="edu-feature-card edu-feature-card--algo">
+          <div class="edu-feature-visual">
+            <div class="edu-feature-glow"></div>
+            <span class="edu-feature-year">C++ • Closed System</span>
+            <span class="edu-feature-big">∞</span>
+            <span class="edu-feature-label">هندسة لا تُكسر</span>
+            <div class="edu-feature-icon">⚙️</div>
+          </div>
+          <div class="edu-feature-body">
+            <div class="edu-feature-badge"><span>🧬</span> دليل أكاديمي — شفرة البنية</div>
+            <h3>الدليل الأكاديمي في الخوارزميات الهندسية</h3>
+            <p class="edu-feature-desc">فك شفرة البنية التحتية — خوارزميات التقييم، المحاسبة الذكية، ومنطق توزيع الأصول بلا طرف ثالث.</p>
+            <div class="edu-feature-stats">
+              <span><b>57</b> استراتيجية</span>
+              <span><b>45%</b> حد تركيز</span>
+              <span><b>3</b> فئات</span>
+            </div>
+            <span class="edu-feature-btn">🧬 فتح الدليل الأكاديمي <span class="edu-arrow">↗</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>ابدأ رحلتك الاستثمارية اليوم</h2>
+      <p class="cta-desc">احسب عائدك، راجع النتائج، وتواصل مع مستشار معتمد لبدء التنفيذ.</p>
+      <div class="cta-buttons">
+        <a href="#calculator-section" class="btn-calc-gold">📊 احسب عائدك الآن</a>
+        <a href="https://wa.me/Wesam.Nafaa" target="_blank" rel="noopener noreferrer" class="btn-cta-outline">📞 تواصل مع مستشار</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="logo footer-logo"><div class="logo-icon">🛡️</div><span>نظام الاستثمار المُحصّن</span></div>
+        <div class="footer-links"><a href="#" data-modal="privacy">سياسة الخصوصية</a><a href="#" data-modal="terms">الشروط والأحكام</a><a href="#" data-modal="contact">تواصل معنا</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">إخلاء المسؤولية: الأداء السابق لا يضمن النتائج المستقبلية. الأرقام المعروضة مبنية على اختبارات تاريخية وقد تتضمن مخاطر مرتفعة. يجب مراجعة درجة المخاطرة قبل اتخاذ أي قرار استثماري. نظام الاستثمار المُحصّن لا يقدم أي وعود بعائد مضمون.</p>
+        <p class="footer-copy">© 2026 نظام الاستثمار المُحصّن. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals — بناءً على التقديم السيادي 2008-2026 -->
+  <div class="modal-overlay" id="modal-privacy" aria-hidden="true">
+    <div class="modal-backdrop" data-close="privacy"></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title">
+      <button class="modal-close" data-close="privacy" aria-label="إغلاق">×</button>
+      <div class="modal-header">
+        <div class="modal-icon">🔒</div>
+        <div>
+          <h3 id="modal-privacy-title">سياسة الخصوصية — الاستقلالية السيادية</h3>
+          <p class="modal-subtitle">مستوحاة من هندسة النظام المغلق — التقديم الفني 2008-2026</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-badge">نظام مغلق 100% — بدون طرف ثالث</div>
+        <p>يُدار <b>نظام الاستثمار المُحصّن</b> كإطار عمل مالي <b>مضاد للكسر</b> ومغلق بالكامل، مُدرّب عبر فريق هندسي متقدّم وخوارزميات وكلاء ذكاء اصطناعي مُصطفاة، <b>ولا يعتمد على أي فريم ورك خارجي</b> (ص 2-1). هذه الفلسفة هي أساس خصوصيتك.</p>
+        <h4>1) عدم الاعتماد على مكتبات خارجية</h4>
+        <p>النظام مطوّر بأنوية <b>C++</b> خالصة بدون اتكاء على أطراف ثالثة، مُشفّر حتى عند تنفيذه في الرامات ومضاد لأي هندسة عكسية (ص 2-الاستقلالية التقنية). لذا لا يتم تحميل SDK تتبّع خارجي، ولا يتم مشاركة بياناتك مع شبكات إعلانية.</p>
+        <h4>2) ما نجمعه — ولماذا</h4>
+        <ul>
+          <li><b>بيانات الحاسبة فقط:</b> رأس المال المدخل وتوزيع المخاطرة — تُعالج محلياً في متصفحك لحساب التوزيع عبر <b>57 استراتيجية</b> ولا تُرسل لخادم خارجي.</li>
+          <li><b>تفضيل المظهر:</b> اختيارك فاتح/داكن يُحفظ في <code>localStorage</code> على جهازك فقط.</li>
+          <li><b>التواصل الطوعي:</b> عند ضغط "تواصل مع مستشار" تنتقل لواتساب خارجي بمحض إرادتك.</li>
+        </ul>
+        <h4>3) التخزين والمعالجة</h4>
+        <p>المحاسبة الذكية والمحرك الخلفي يعملان كـ <b>بروتوكول آلي لتوزيع رأس المال يمنع تركز السيولة (≤45% للاستراتيجية الواحدة)</b> (ص 2-المحاسبة الذكية) — كل ذلك يحدث <b>Client-Side</b> بلا قواعد بيانات مركزية لسلوك الزوار.</p>
+        <h4>4) حقوقك</h4>
+        <p>يمكنك مسح التخزين المحلي، والعمل من <code>file://</code> دون اتصال، وطلب حذف أي مراسلة واتساب. لا نبيع بيانات ولا نستخدمها لتدريب نماذج خارجية.</p>
+        <div class="modal-note">المرجع: "نظام مغلق يعمل بالكامل بشكل آلي ... بعيداً عن مخاطر الطرف الثالث" — التقديم السيادي ص 1-2.</div>
+      </div>
+      <div class="modal-footer"><button class="btn-calc-gold" data-close="privacy">فهمت</button></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-terms" aria-hidden="true">
+    <div class="modal-backdrop" data-close="terms"></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title">
+      <button class="modal-close" data-close="terms" aria-label="إغلاق">×</button>
+      <div class="modal-header">
+        <div class="modal-icon">⚖️</div>
+        <div>
+          <h3 id="modal-terms-title">الشروط والأحكام — إخلاء المسؤولية المؤسسي</h3>
+          <p class="modal-subtitle">18 عاماً من اختبارات الإجهاد — 182,145 صفقة — 3,753,462 ساعة</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-badge danger">الأداء السابق لا يضمن النتائج المستقبلية</div>
+        <p>هذا النظام مبني على <b>تشغيل تاريخي دقيق ومحاكاة حقيقية 2008-2026</b>، ورغم دقته الإحصائية فإنه <b>لا يُعد ضماناً حتمياً</b> (ص 7-إخلاء المسؤولية). الاستثمار يتضمن مخاطر ويتطلب تقييم امتثال داخلي قبل التنفيذ.</p>
+        <h4>1) التصنيف الثلاثي — وافِق قبل الاستخدام</h4>
+        <ul>
+          <li><b>آمن (19 استراتيجية):</b> العمود الفقري، صمد 18 عاماً — أمثلة EURUSD 1 بحد 18,000$ وربح 1.78 ونسبة فوز 96.74%، و EURGBP 1 بمعامل ارتداد 3.08.</li>
+          <li><b>متوسط (15):</b> 6 سنوات أخيرة لتعظيم الربحية مع تنبيه شفاف: <b>"انخفاض حاد كل 5 سنوات"</b> حسب الرصد الخوارزمي.</li>
+          <li><b>عالي (23):</b> هجومي، لم يجتز 18 عاماً لكنه اجتاز كورونا وحروب التسعير — GBPUSD 3 بحد 5,000$ وفوز 96.82%.</li>
+        </ul>
+        <h4>2) الأتعاب والتوزيع</h4>
+        <p>يُقتطع <b>20% من الريع والأرباح</b> لصالح إدارة النظام لتغطية الإدارة والصيانة والتطوير طويل الأمد (ص 6). التوزيع يمنع اختيار أكثر من <b>استراتيجيتين لنفس الرمز داخل الفئة</b> لضمان التنوع.</p>
+        <h4>3) قواعد التعزيز والرصد — التزام المستثمر</h4>
+        <p>تمر الخوارزميات الآمنة بهبوط قد يصل <b>85% مرة كل عقدين</b>. يجب إبقاء مبلغ احتياطي يعادل <b>أقصى هبوط تاريخي</b> جاهزاً للتدخل عند اقتراب حاجز <b>80%</b>، وإلا يُفعّل <b>ستركشر التشغيل الآمن</b>: تعطيل الخوارزميات بلا شبكات مفتوحة ونقل الأرصدة لدعم الأصل المختبر (ص 6).</p>
+        <h4>4) السجل المرجعي</h4>
+        <p>النظام اجتاز: الرهن العقاري 2008، ديون اليورو، انهيار النفط 2014، الحرب التجارية، كوفيد والإغلاق العظيم، التضخم وانهيار SVB/Credit Suisse، وصدمة إعادة التسعير 2024-2026 — لكن ذلك لا يلغي احتمال سيناريو أعنف (حروب نووية/محو اقتصاد — ص 4 ملاحظة).</p>
+        <div class="modal-note">باستخدامك الحاسبة وتحميل PDF فإنك تقر بقراءة هذه الشروط وتصنيف المخاطرة في <a href="#disclosure">قسم الإفصاح</a>.</div>
+      </div>
+      <div class="modal-footer"><button class="btn-calc-gold" data-close="terms">أوافق وأتابع</button></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-contact" aria-hidden="true">
+    <div class="modal-backdrop" data-close="contact"></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-contact-title">
+      <button class="modal-close" data-close="contact" aria-label="إغلاق">×</button>
+      <div class="modal-header">
+        <div class="modal-icon">📞</div>
+        <div>
+          <h3 id="modal-contact-title">تواصل معنا — نظام الاستثمار المُحصّن</h3>
+          <p class="modal-subtitle">دعوة لصناع القرار والمديرين الاستراتيجيين — التقديم السيادي ص 7</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>ندعو <b>صناع القرار والمديرين الاستراتيجيين</b> لمراجعة التقرير الفني الكامل <b>XLSX</b> الذي يتضمن تفاصيل كل استراتيجية من الـ <b>57</b>، تمهيداً لاعتماد النظام ضمن استراتيجيات التحوط والنمو المستدام (ص 7).</p>
+        <div class="contact-grid">
+          <a href="https://wa.me/Wesam.Nafaa" target="_blank" rel="noopener" class="contact-card">
+            <span class="contact-ico">💬</span>
+            <div><b>واتساب مستشار معتمد</b><span>رد خلال ساعات العمل — Wesam.Nafaa</span></div>
+          </a>
+          <a href="https://docs.google.com/spreadsheets/d/1gfLYX7eGwTM6qYXiE7S6bDiSdCVBshiqTyiWoyazKX0/edit?usp=sharing" target="_blank" rel="noopener" class="contact-card">
+            <span class="contact-ico">📊</span>
+            <div><b>التقرير الشامل 18 عاماً</b><span>Google Sheets — البيانات التشغيلية</span></div>
+          </a>
+          <a href="../docs/نظام الاستثمار المُحصّن السّيادي - التقديم الفني والرياضي والعملياتي والتحليلي للبنية التحتية - واستقرار النمو المالي (2008-2026).pdf" target="_blank" rel="noopener" class="contact-card">
+            <span class="contact-ico">📄</span>
+            <div><b>التقديم السيادي PDF</b><span>9 صفحات — البنية التحتية واستقرار النمو</span></div>
+          </a>
+        </div>
+        <h4>ماذا نناقش في الاستشارة؟</h4>
+        <ul>
+          <li>اختيار الفئة الأنسب لرأس مالك (بدءاً من 5,000$ للهجومي و 5,500$ للمتوسط و 18,000$ للآمن).</li>
+          <li>توزيعك الحالي (مثل 50/30/20) وتأثيره على العائد الصافي بعد 20% أتعاب.</li>
+          <li>خطة الاحتياطي (أقصى تراجع ~88.7% لمرة واحدة) وآلية ستركشر التدخل.</li>
+        </ul>
+        <div class="modal-note">المحرك الخلفي جاهز لتقديم مستويات غير مسبوقة من الاستقرار للمؤسسات الكبرى — ص 7.</div>
+      </div>
+      <div class="modal-footer"><button class="btn-calc-gold" data-close="contact">إغلاق</button></div>
+    </div>
+  </div>
+
+  <!-- Core Logic — نفس الملفات الأصلية 100% دون أي تعديل -->
+  <script src="js/data.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/strategy.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/pdf-report.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Enhancement Layer — خاص بـ index-new فقط: ألوان داشبورد + ثيم -->
+  <script>
+  (function(){
+    // Theme switch — persists
+    var html = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    // ——— Dark هو الافتراضي المثبت ———
+    var saved = localStorage.getItem('ifs-theme');
+    var migrated = localStorage.getItem('ifs-theme-migrated-v3');
+    // هجرة لمرة واحدة: إعادة الافتراضي إلى dark كما طلب المالك
+    if(!migrated){
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('ifs-theme', 'dark');
+      localStorage.setItem('ifs-theme-migrated-v3', '1');
+    } else if(saved){
+      html.setAttribute('data-theme', saved);
+    } else {
+      html.setAttribute('data-theme', 'dark');
+    }
+    function syncLabel(){
+      var isLight = html.getAttribute('data-theme')==='light';
+      btn.title = isLight ? 'الوضع الداكن' : 'الوضع الفاتح';
+    }
+    syncLabel();
+    btn.addEventListener('click', function(){
+      var cur = html.getAttribute('data-theme');
+      var next = cur==='dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('ifs-theme', next);
+      syncLabel();
+      // redraw charts with new palette after theme change
+      if(window._lastChartData) redrawLuxuryCharts();
+    });
+
+    // إصلاح سكرول app.js الأصلي ليحترم الهيدر الثابت
+    (function(){
+      var _orig = Element.prototype.scrollIntoView;
+      Element.prototype.scrollIntoView = function(a){
+        if(this && this.id === 'results-section'){
+          var h = (document.getElementById('header') && document.getElementById('header').offsetHeight) || 68;
+          var top = this.getBoundingClientRect().top + window.pageYOffset - h - 16;
+          window.scrollTo({top: Math.max(0, top), behavior: (a && a.behavior) || 'smooth'});
+          return;
+        }
+        return _orig.apply(this, arguments);
+      };
+    })();
+
+    // Luxury chart palette
+    var LUXE = {
+      dark:{ safe:'#D4AF37', avg:'#E8A838', high:'#E84B4B', gross:'#F2D98B', net:'#1AB188', grid:'rgba(255,255,255,.06)', text:'#9AA3B8' },
+      light:{ safe:'#B8941A', avg:'#C9851A', high:'#C53030', gross:'#D4AF37', net:'#0E9F6E', grid:'rgba(26,30,46,.06)', text:'#6B7280' }
+    };
+    function luxeColors(){ return html.getAttribute('data-theme')==='light' ? LUXE.light : LUXE.dark; }
+
+    // Patch charts to luxe — wraps original functions
+    var _origPie = window.drawPieChart;
+    var _origBar = window.drawBarChart;
+    window._lastChartData = null;
+
+    window.drawPieChart = function(canvasId, data){
+      var c = luxeColors();
+      var luxeData = data.map(function(d,i){
+        var cols=[c.safe,c.avg,c.high];
+        return { label:d.label, value:d.value, color:cols[i]||cols[0] };
+      });
+      _origPie(canvasId, luxeData);
+      // fix donut center color per theme
+      var canvas=document.getElementById(canvasId);
+      if(canvas){
+        var ctx=canvas.getContext('2d');
+        var w=canvas.width,h=canvas.height;
+        ctx.fillStyle = html.getAttribute('data-theme')==='light' ? '#FFFFFF' : '#131B31';
+        // center text needs recolor
+        ctx.fillStyle = html.getAttribute('data-theme')==='light' ? '#1A1E2E' : '#F8F5EE';
+        ctx.font='bold 15px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+        var total=0;for(var k=0;k<data.length;k++) total+=data[k].value;
+        ctx.fillText(total+'%', w/2, h/2);
+      }
+    };
+    window.drawBarChart = function(canvasId, grossData, netData, labels){
+      var c=luxeColors();
+      var canvas=document.getElementById(canvasId);
+      if(!canvas) return;
+      var ctx=canvas.getContext('2d');
+      var w=canvas.width,h=canvas.height;
+      ctx.clearRect(0,0,w,h);
+      var pad={top:30,right:24,bottom:44,left:62};
+      var cw=w-pad.left-pad.right, ch=h-pad.top-pad.bottom;
+      var maxVal=0;
+      for(var i=0;i<grossData.length;i++){ if(grossData[i]>maxVal) maxVal=grossData[i]; if(netData[i]>maxVal) maxVal=netData[i]; }
+      if(maxVal===0) maxVal=1; maxVal*=1.15;
+      var groupW=cw/labels.length, barW=groupW*0.28;
+      ctx.strokeStyle=c.grid;ctx.lineWidth=1;
+      for(var i=0;i<=4;i++){
+        var y=pad.top+ch-(ch*i/4);
+        ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();
+        ctx.fillStyle=c.text;ctx.font='11px Inter';ctx.textAlign='right';ctx.textBaseline='middle';
+        ctx.fillText('$'+Math.round(maxVal*i/4).toLocaleString(), pad.left-8, y);
+      }
+      for(var i=0;i<labels.length;i++){
+        var gx=pad.left+groupW*i+groupW/2;
+        var bh1=(grossData[i]/maxVal)*ch, bh2=(netData[i]/maxVal)*ch;
+        var x1=gx-barW-3, x2=gx+3;
+        // gross — gold gradient
+        var g1=ctx.createLinearGradient(x1, pad.top+ch-bh1, x1, pad.top+ch);
+        g1.addColorStop(0,c.gross);g1.addColorStop(1, html.getAttribute('data-theme')==='light'?'#C9A227':'#8A6D14');
+        ctx.fillStyle=g1;ctx.beginPath();ctx.roundRect(x1, pad.top+ch-bh1, barW, bh1, [6,6,0,0]);ctx.fill();
+        // net — emerald
+        var g2=ctx.createLinearGradient(x2, pad.top+ch-bh2, x2, pad.top+ch);
+        g2.addColorStop(0,c.net);g2.addColorStop(1,'#0E7A5E');
+        ctx.fillStyle=g2;ctx.beginPath();ctx.roundRect(x2, pad.top+ch-bh2, barW, bh2, [6,6,0,0]);ctx.fill();
+        ctx.fillStyle=c.text;ctx.font='12px IBM Plex Sans Arabic';ctx.textAlign='center';ctx.textBaseline='top';
+        ctx.fillText(labels[i], gx, pad.top+ch+10);
+      }
+    };
+    function redrawLuxuryCharts(){
+      if(!window._lastChartData) return;
+      var d=window._lastChartData;
+      drawPieChart('pie-chart', d.pie);
+      drawBarChart('bar-chart', d.gross, d.net, d.labels);
+    }
+    // ——— انتقال الحاسبة: المنتصف → اليمين بترانزيشن فاخر ———
+    (function(){
+      var shell=document.getElementById('app-shell');
+      var rs=document.getElementById('results-section');
+      var emptyEl=document.getElementById('dashboard-empty');
+      if(!shell || !rs) return;
+      function toCenter(){
+        shell.classList.add('is-idle');
+        shell.classList.remove('has-results');
+        if(emptyEl) emptyEl.style.display='none';
+        // على الجوال نبقي الداشبورد مخفي حتى يتركز الانتباه على الحاسبة
+      }
+      function toDashboard(){
+        shell.classList.remove('is-idle');
+        shell.classList.add('has-results');
+        if(emptyEl) emptyEl.style.display='none';
+      }
+      // الحالة الافتتاحية: منتصف
+      toCenter();
+      // عند الحساب: تنتقل لليمين بسلاسة
+      var calcBtn=document.getElementById('btn-calculate');
+      if(calcBtn){
+        calcBtn.addEventListener('click', function(){
+          // نؤخر التبديل لجزء من الثانية ليظهر الانتقال بعد بدء الحساب
+          setTimeout(toDashboard, 80);
+        });
+      }
+      var resetBtn=document.getElementById('btn-reset');
+      if(resetBtn){
+        resetBtn.addEventListener('click', function(){
+          setTimeout(toCenter, 120);
+        });
+      }
+      // مراقب احتياطي لحالة النتائج (لو تم استدعاء renderResults من أي مكان آخر)
+      var tries2=0;
+      var iv2=setInterval(function(){
+        tries2++;
+        if(tries2>80){ clearInterval(iv2); return; }
+        if(!rs) return;
+        var obs2=new MutationObserver(function(){
+          if(rs.style.display!=='none'){
+            toDashboard();
+            var s=parseInt(document.getElementById('risk-safe-value').textContent)||0;
+            var a=parseInt(document.getElementById('risk-average-value').textContent)||0;
+            var h=parseInt(document.getElementById('risk-high-value').textContent)||0;
+            window._lastChartData={ pie:[{label:'آمن',value:s},{label:'متوسط',value:a},{label:'عالٍ',value:h}], gross:null, net:null, labels:['أسبوعي','شهري','سنوي'] };
+          }
+        });
+        obs2.observe(rs, {attributes:true, attributeFilter:['style']});
+        clearInterval(iv2);
+      },150);
+    })();
+
+    // intercept renderResults to capture data + hide empty state (للرسوم فقط)
+    var tries=0;
+    var iv=setInterval(function(){
+      tries++;
+      if(tries>80){ clearInterval(iv); return; }
+      var rs=document.getElementById('results-section');
+      if(!rs) return;
+      var obs=new MutationObserver(function(){
+        if(rs.style.display!=='none'){
+          var s=parseInt(document.getElementById('risk-safe-value').textContent)||0;
+          var a=parseInt(document.getElementById('risk-average-value').textContent)||0;
+          var h=parseInt(document.getElementById('risk-high-value').textContent)||0;
+          window._lastChartData={ pie:[{label:'آمن',value:s},{label:'متوسط',value:a},{label:'عالٍ',value:h}], gross:null, net:null, labels:['أسبوعي','شهري','سنوي'] };
+        }
+      });
+      obs.observe(rs, {attributes:true, attributeFilter:['style']});
+      clearInterval(iv);
+    },150);
+
+    // إصلاح سكرول النتائج — يذهب لأول القسم كاملاً (فوق الهيدر)
+    (function(){
+      var calcBtnFix = document.getElementById('btn-calculate');
+      if(calcBtnFix){
+        calcBtnFix.addEventListener('click', function(){
+          setTimeout(function(){
+            var sec = document.getElementById('results-section');
+            if(!sec || sec.style.display==='none') return;
+            var headerH = (document.getElementById('header') && document.getElementById('header').offsetHeight) || 68;
+            var top = sec.getBoundingClientRect().top + window.scrollY - headerH - 16;
+            window.scrollTo({top: Math.max(0, top), behavior: 'smooth'});
+          }, 420);
+        });
+      }
+    })();
+
+    // also patch calc button to store bar data
+    document.addEventListener('click', function(e){
+      if(e.target && e.target.id==='btn-calculate'){
+        setTimeout(function(){
+          // after app.js draws, capture bar data by reading res values is tricky; instead we rely on next theme toggle to just re-patch via original data
+          // simpler: after 400ms, if charts exist, store their current gross/net by temporarily wrapping
+          window._lastChartData = window._lastChartData || { pie:[{label:'آمن',value:50},{label:'متوسط',value:30},{label:'عالٍ',value:20}] };
+        },500);
+      }
+      if(e.target && e.target.id==='btn-reset'){
+        setTimeout(function(){ document.getElementById('dashboard-empty').style.display='block'; },100);
+      }
+    });
+
+    // أزرار إزاحة جدول الاستراتيجيات — سكرول فاخر للديسكتوب
+    (function(){
+      var wrap=document.getElementById('table-wrapper');
+      var btnPrev=document.getElementById('table-scroll-prev');
+      var btnNext=document.getElementById('table-scroll-next');
+      if(!wrap||!btnPrev||!btnNext) return;
+      function updateBtns(){
+        var max=Math.max(0, wrap.scrollWidth - wrap.clientWidth);
+        var cur=Math.abs(wrap.scrollLeft);
+        // في RTL: البداية يمين
+        btnPrev.disabled = cur <= 2;
+        btnNext.disabled = cur >= max - 2;
+        // إخفاء الأزرار إذا لا يوجد سكرول
+        var hasScroll = max > 10;
+        btnPrev.style.visibility = hasScroll ? 'visible' : 'hidden';
+        btnNext.style.visibility = hasScroll ? 'visible' : 'hidden';
+      }
+      btnPrev.addEventListener('click', function(){ wrap.scrollBy({left: 340, behavior:'smooth'}); });
+      btnNext.addEventListener('click', function(){ wrap.scrollBy({left: -340, behavior:'smooth'}); });
+      wrap.addEventListener('scroll', updateBtns, {passive:true});
+      var tbody=document.getElementById('strategy-tbody');
+      if(tbody){ new MutationObserver(function(){ setTimeout(updateBtns, 80); }).observe(tbody,{childList:true}); }
+      window.addEventListener('resize', updateBtns);
+      setTimeout(updateBtns, 700);
+    })();
+
+    // مودالات الفوتر — بناءً على التقديم السيادي
+    (function(){
+      function openModal(id){
+        var el=document.getElementById('modal-'+id);
+        if(!el) return;
+        el.classList.add('open');
+        el.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      }
+      function closeModal(id){
+        var el=id ? document.getElementById('modal-'+id) : null;
+        if(el){
+          el.classList.remove('open');
+          el.setAttribute('aria-hidden','true');
+        } else {
+          document.querySelectorAll('.modal-overlay.open').forEach(function(m){
+            m.classList.remove('open'); m.setAttribute('aria-hidden','true');
+          });
+        }
+        if(!document.querySelector('.modal-overlay.open')) document.body.style.overflow='';
+      }
+      document.querySelectorAll('[data-modal]').forEach(function(a){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          openModal(this.getAttribute('data-modal'));
+        });
+      });
+      document.querySelectorAll('[data-close]').forEach(function(b){
+        b.addEventListener('click', function(){ closeModal(this.getAttribute('data-close')); });
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key==='Escape') closeModal();
+      });
+    })();
+
+    // Pie legend for new layout
+    var pieLegend=document.getElementById('pie-legend');
+    if(pieLegend){
+      var mo=new MutationObserver(function(){
+        // keep original legend hidden — we use canvas labels instead
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

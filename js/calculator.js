@@ -1,7 +1,13 @@
-// محرك حسابات نظام الاستثمار المُحصّن
-function calcStrategyReturn(strategy, allocatedAmount) {
-  var yearlyGross = allocatedAmount * (strategy.annualReturnRate / 100);
-  var ratio = allocatedAmount / strategy.depositMin;
+// محرك حسابات نظام الاستثمار المُحصّن — يدعم التيرمينال (Lot ثابت 0.10/0.30)
+function calcStrategyReturn(strategy, allocatedAmount, terminals) {
+  // allocatedAmount = terminals * depositMin — لكن نحتفظ بالباراميتر للتوافق
+  var t = terminals || (strategy.depositMin ? Math.max(1, Math.round(allocatedAmount / strategy.depositMin)) : 1);
+  // yearlyGross عبر terminals * depositMin * ARR% (مكافئ لـ allocatedAmount * ARR% لكن أوضح للتيرمينال)
+  var effectiveAllocated = t * strategy.depositMin;
+  // إذا allocatedAmount مختلف (بسبب تقريب)، استخدم الأكبر دقة
+  if (allocatedAmount && Math.abs(allocatedAmount - effectiveAllocated) > 1) effectiveAllocated = allocatedAmount;
+  var yearlyGross = effectiveAllocated * (strategy.annualReturnRate / 100);
+  var ratio = t; // كل تيرمينال = وحدة مخاطرة كاملة (Lot ثابت)
   return {
     weeklyGross: yearlyGross / 52,
     monthlyGross: yearlyGross / 12,
@@ -17,7 +23,8 @@ function calcPortfolio(allocations, capital) {
   var totalWeeklyNet = 0, totalMonthlyNet = 0, totalYearlyNet = 0;
   var totalMaxDD = 0, totalUsed = 0;
   for (var i = 0; i < allocations.length; i++) {
-    var r = calcStrategyReturn(allocations[i].strategy, allocations[i].allocated);
+    var a = allocations[i];
+    var r = calcStrategyReturn(a.strategy, a.allocated, a.terminals || 1);
     totalWeeklyGross += r.weeklyGross;
     totalMonthlyGross += r.monthlyGross;
     totalYearlyGross += r.yearlyGross;
@@ -25,8 +32,8 @@ function calcPortfolio(allocations, capital) {
     totalMonthlyNet += r.monthlyNet;
     totalYearlyNet += r.yearlyNet;
     totalMaxDD += r.maxDrawdown;
-    totalUsed += allocations[i].allocated;
-    allocations[i].result = r;
+    totalUsed += a.allocated;
+    a.result = r;
   }
   return {
     weeklyGross: totalWeeklyGross, monthlyGross: totalMonthlyGross, yearlyGross: totalYearlyGross,

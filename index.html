@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/styles-new.css">
   <script src="js/lib/jspdf.umd.min.js"></script>
   <script src="js/lib/jspdf.plugin.autotable.min.js"></script>
+  <script src="js/csv-loader.js"></script>
 </head>
 <body>
 
@@ -282,7 +283,7 @@
                 <table class="strategy-table" id="strategy-table">
                   <thead>
                     <tr>
-                      <th>الرمز</th><th>الاستراتيجية</th><th>المخاطرة</th><th>Lot Size</th><th>الحد الأدنى</th><th>المخصص</th><th>أسبوعي</th><th>شهري</th><th>سنوي</th><th>نسبة العائد</th><th>أقصى تراجع</th><th>PF</th><th>Win %</th><th>Fees</th><th>الفترة</th>
+                      <th>الرمز</th><th>الاستراتيجية</th><th>المخاطرة</th><th>Lot Size</th><th>الحد الأدنى</th><th>المخصص</th><th>التيرمينال</th><th>أسبوعي</th><th>شهري</th><th>سنوي</th><th>نسبة العائد</th><th>أقصى تراجع</th><th>PF</th><th>Win %</th><th>Fees</th><th>الفترة</th>
                     </tr>
                   </thead>
                   <tbody id="strategy-tbody"></tbody>
@@ -624,8 +625,26 @@
     </div>
   </div>
 
-  <!-- Core Logic — نفس الملفات الأصلية 100% دون أي تعديل -->
-  <script src="js/data.js"></script>
+  <!-- Modal — تفاصيل تقييم الاستراتيجية (السكور) -->
+  <div class="modal-overlay" id="modal-scoring" aria-hidden="true">
+    <div class="modal-backdrop" data-close="scoring"></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-scoring-title" style="max-width:720px">
+      <button class="modal-close" data-close="scoring" aria-label="إغلاق">×</button>
+      <div class="modal-header">
+        <div class="modal-icon" style="background:var(--gold-soft);color:var(--gold)">ⓘ</div>
+        <div>
+          <h3 id="modal-scoring-title">تفاصيل تقييم الاستراتيجية</h3>
+          <p class="modal-subtitle" id="modal-scoring-subtitle">كيف تم حساب السكور — 10 عوامل</p>
+        </div>
+      </div>
+      <div class="modal-body" id="modal-scoring-body">
+        <!-- يُملأ ديناميكياً عبر app.js -->
+      </div>
+      <div class="modal-footer"><button class="btn-calc-gold" data-close="scoring">إغلاق</button></div>
+    </div>
+  </div>
+
+  <!-- Core Logic — CSV هو المصدر الوحيد (يتطلب سيرفر محلي) -->
   <script src="js/calculator.js"></script>
   <script src="js/strategy.js"></script>
   <script src="js/charts.js"></script>

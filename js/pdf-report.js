@@ -109,7 +109,7 @@ function generatePDFReport(state, allocations, portfolio) {
   setFont(9, 'bold');
   doc.text('Operating Fees Deducted:', margin + 4, y + 6);
   setFont(8);
-  doc.text('All operating fees: 20% across all risk categories.', margin + 4, y + 12);
+  doc.text('All operating fees: 20% across all risk categories. Lot 0.10/0.30 fixed — multiple terminals used instead of lot scaling.', margin + 4, y + 12);
   doc.text('All returns shown are NET after fees.', margin + 4, y + 17);
   y += 28;
 
@@ -128,11 +128,13 @@ function generatePDFReport(state, allocations, portfolio) {
   for (var i = 0; i < allocations.length; i++) {
     var a = allocations[i], r = a.result;
     var catLabel = a.riskCategory === 'safe' ? 'Safe' : a.riskCategory === 'average' ? 'Average' : 'High';
+    var t = a.terminals || 1;
     tableRows.push([
       a.strategy.symbol,
       a.strategy.strategy,
       catLabel,
       '$' + a.allocated.toLocaleString(),
+      'x'+t,
       '$' + Math.round(r.weeklyNet).toLocaleString(),
       '$' + Math.round(r.monthlyNet).toLocaleString(),
       '$' + Math.round(r.yearlyNet).toLocaleString(),
@@ -146,27 +148,28 @@ function generatePDFReport(state, allocations, portfolio) {
 
   doc.autoTable({
     startY: y,
-    head: [['Symbol', 'Strategy', 'Risk', 'Allocated', 'Weekly', 'Monthly', 'Yearly', 'AR%', 'Max DD', 'PF', 'Win%', 'Period']],
+    head: [['Symbol', 'Strategy', 'Risk', 'Allocated', 'Terminals', 'Weekly', 'Monthly', 'Yearly', 'AR%', 'Max DD', 'PF', 'Win%', 'Period']],
     body: tableRows,
     theme: 'striped',
-    headStyles: { fillColor: [17, 24, 43], textColor: [242, 217, 139], fontSize: 6.5, fontStyle: 'bold', halign: 'center', cellPadding: 1.6, lineWidth: 0.15, lineColor: [212, 175, 55] },
-    bodyStyles: { fontSize: 6.2, cellPadding: 1.4, lineWidth: 0.1, lineColor: [230, 232, 235] },
+    headStyles: { fillColor: [17, 24, 43], textColor: [242, 217, 139], fontSize: 6.2, fontStyle: 'bold', halign: 'center', cellPadding: 1.4, lineWidth: 0.15, lineColor: [212, 175, 55] },
+    bodyStyles: { fontSize: 5.8, cellPadding: 1.2, lineWidth: 0.1, lineColor: [230, 232, 235] },
     alternateRowStyles: { fillColor: [252, 250, 242] },
     styles: { overflow: 'linebreak', cellWidth: 'wrap', minCellHeight: 5, valign: 'middle', halign: 'center' },
     tableWidth: contentW,
     columnStyles: {
-      0: { cellWidth: 14, halign: 'center' },
-      1: { cellWidth: 12, halign: 'center' },
-      2: { cellWidth: 15, halign: 'center' },
-      3: { cellWidth: 18, halign: 'right' },
-      4: { cellWidth: 16, halign: 'right' },
-      5: { cellWidth: 16, halign: 'right' },
-      6: { cellWidth: 18, halign: 'right' },
-      7: { cellWidth: 14, halign: 'center' },
-      8: { cellWidth: 16, halign: 'right' },
-      9: { cellWidth: 10, halign: 'center' },
-      10: { cellWidth: 12, halign: 'center' },
-      11: { cellWidth: 19, halign: 'center', fontSize: 5.8 }
+      0: { cellWidth: 13, halign: 'center' },
+      1: { cellWidth: 11, halign: 'center' },
+      2: { cellWidth: 13, halign: 'center' },
+      3: { cellWidth: 17, halign: 'right' },
+      4: { cellWidth: 11, halign: 'center', fontStyle: 'bold' },
+      5: { cellWidth: 15, halign: 'right' },
+      6: { cellWidth: 15, halign: 'right' },
+      7: { cellWidth: 17, halign: 'right' },
+      8: { cellWidth: 13, halign: 'center' },
+      9: { cellWidth: 15, halign: 'right' },
+      10: { cellWidth: 10, halign: 'center' },
+      11: { cellWidth: 11, halign: 'center' },
+      12: { cellWidth: 19, halign: 'center', fontSize: 5.4 }
     },
     margin: { left: margin, right: margin },
     didParseCell: function(data) {
